@@ -1,17 +1,27 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./FilmCard.module.scss";
 import { Icon, InlineIcon } from "@iconify/react";
-import starFill from '@iconify/icons-bi/star-fill';
-import {firestore} from "../../firebase";
+import starFill from "@iconify/icons-bi/star-fill";
+import { firestore } from "../../firebase";
 
 const FilmCard = ({ film }) => {
   const [isFav, setIsFav] = useState(false);
 
   const addToFav = () => {
     setIsFav(true);
-    firestore.collection("favourites").add({"movie-name":film.Title, "year":film.Year, "image":film.Poster, "imdbID":film.imdbID})
-  }
+  };
 
+  useEffect(() => {
+    if (isFav) {
+      fetch(`http://www.omdbapi.com/?apikey=e156d28c&i=${film.imdbID}`)
+        .then((response) => {
+          return response.json();
+        })
+        .then((data) => {
+          firestore.collection("favourites").add(data);
+        });
+    }
+  }, [isFav]);
 
   return (
     <div className={styles.cardContainer}>

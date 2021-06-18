@@ -1,15 +1,7 @@
-import './App.css';
-import {BrowserRouter as Router} from "react-router-dom";
-import Routes from "./container/Routes"
-import NavBar from './components/NavBar';
+import UserProvider from "./context/UserProvider/UserProvider";
 
 function App() {
-  return (
-    <Router>
-      <NavBar />
-      <Routes />
-    </Router>
-  );
+  return <UserProvider />;
 }
 
 export default App;

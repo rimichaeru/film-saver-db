@@ -1,5 +1,6 @@
 .container {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 3fr;
   border: 1px solid black;
   width: 60vw;
   flex-wrap: wrap;
@@ -15,17 +16,25 @@
 
   img {
     border-radius: 20px;
+    height: 100%;
   }
 
   .info {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
-    width: 40vw;
+    padding: 20px;
+    text-align: center;
+
+    h1 {
+      font-size: 36px;
+    }
+    
 
     .year {
       padding: 0 20px;
-      font-size: 20px;
+      font-size: 16px;
     }
   }
 }
