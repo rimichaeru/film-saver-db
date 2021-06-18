@@ -26,7 +26,6 @@ const UserProvider = () => {
     firebase.auth().onAuthStateChanged((user) => {
       user ? setUser(user) : setUser(null);
     });
-    console.log(user);
   };
 
   useEffect(() => {

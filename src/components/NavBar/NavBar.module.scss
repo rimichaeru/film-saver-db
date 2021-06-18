@@ -18,4 +18,20 @@
 
     }
   };
+
+  .button {
+    background-color: #17191f;
+    padding: 14px;
+    color: white;
+    border-radius: 10px;
+    margin-bottom: 14px;
+
+    &:hover {
+      background-color: goldenrod;
+    }
+  }
+
+  .hidden {
+    display: none;
+  }
 }

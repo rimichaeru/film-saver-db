@@ -1,11 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import styles from "./FilmCard.module.scss";
 import { Icon, InlineIcon } from "@iconify/react";
 import starFill from "@iconify/icons-bi/star-fill";
 import { firestore } from "../../firebase";
+import { UserContext } from "../../context/UserProvider/UserProvider";
 
 const FilmCard = ({ film }) => {
   const [isFav, setIsFav] = useState(false);
+
+  const user = useContext(UserContext);
+  console.log(user.user.uid);
+
 
   const addToFav = () => {
     setIsFav(true);
@@ -18,7 +23,7 @@ const FilmCard = ({ film }) => {
           return response.json();
         })
         .then((data) => {
-          firestore.collection("favourites").add(data);
+          firestore.collection("favourites").doc(user.user.uid).collection("films").add(data);
         });
     }
   }, [isFav]);
