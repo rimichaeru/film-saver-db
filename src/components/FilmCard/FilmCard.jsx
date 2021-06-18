@@ -18,7 +18,7 @@ const FilmCard = ({ film }) => {
 
   useEffect(() => {
     if (isFav) {
-      fetch(`http://www.omdbapi.com/?apikey=e156d28c&i=${film.imdbID}`)
+      fetch(`https://www.omdbapi.com/?apikey=e156d28c&i=${film.imdbID}`)
         .then((response) => {
           return response.json();
         })

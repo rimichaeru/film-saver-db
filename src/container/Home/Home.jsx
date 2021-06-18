@@ -10,7 +10,7 @@ const Home = () => {
     if (!search) {
       return
     }
-    fetch(`http://www.omdbapi.com/?apikey=e156d28c&t&type=movie&s=${search}`)
+    fetch(`https://www.omdbapi.com/?apikey=e156d28c&t&type=movie&s=${search}`)
       .then((response) => {
         return response.json();
       })
