@@ -1,0 +1,53 @@
+.cardContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 1px solid black;
+  padding: 14px;
+  border-radius: 14px;
+  box-shadow: 1px 2px 4px black;
+  min-height: 380px;
+  min-width: 370px;
+  background-color: #17191f;
+  color: white;
+
+  &:hover {
+    border: 1px solid gold;
+  }
+
+
+  .starContainer {
+    display: flex;
+    justify-content: flex-end;
+
+    .starUnfav {
+      cursor: pointer;
+
+      &:hover {
+        color: gold;
+      }
+    }
+    
+    .starFav {
+      cursor: pointer;
+      color: gold !important;
+      
+      &:hover {
+        color: gold;
+      }
+    }
+  }
+
+  .info {
+    h3 {
+      font-size: 40px;
+      text-align: center;
+    }
+
+    p {
+      font-size: 20px;
+    }
+  }
+
+ 
+}
