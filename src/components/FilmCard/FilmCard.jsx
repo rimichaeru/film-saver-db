@@ -9,21 +9,27 @@ const FilmCard = ({ film }) => {
   const [isFav, setIsFav] = useState(false);
 
   const user = useContext(UserContext);
-  console.log(user.user.uid);
-
 
   const addToFav = () => {
     setIsFav(true);
   };
 
   useEffect(() => {
-    if (isFav) {
+    if (isFav && user.user) {
       fetch(`https://www.omdbapi.com/?apikey=e156d28c&i=${film.imdbID}`)
         .then((response) => {
           return response.json();
         })
         .then((data) => {
           firestore.collection("favourites").doc(user.user.uid).collection("films").add(data);
+        });
+    } else {
+      fetch(`https://www.omdbapi.com/?apikey=e156d28c&i=${film.imdbID}`)
+        .then((response) => {
+          return response.json();
+        })
+        .then((data) => {
+          firestore.collection("favourites").add(data);
         });
     }
   }, [isFav]);

@@ -15,7 +15,6 @@ const Home = () => {
         return response.json();
       })
       .then((data) => {
-        console.log(data["Search"]);
         setFilmList(data["Search"]);
       });
   };
